@@ -188,28 +188,56 @@ Here is a sample board:
  *  ---+---+---
  *   6 | 7 | 8
  */
-const detectTicTacToeWin = (board, lastMove) => {
+let table = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
+]
+const detectTicTacToeWin = (player) => {
   // Solution code here...
-  let winLines = [
-    [[1, 2], [4, 8], [3, 6]],
-    [[0, 2], [4, 7]],
-    [[0, 1], [4, 6], [5, 8]],
-    [[4, 5], [0, 6]],
-    [[3, 5], [0, 8], [2, 6], [1, 7]],
-    [[3, 4], [2, 8]],
-    [[7, 8], [2, 4], [0, 3]],
-    [[6, 8], [1, 4]],
-    [[6, 7], [0, 4], [2, 5]]
-];
-
-    let player = board[lastMove];
-    for (let i = 0; i < winLines[lastMove].length; i++) {
-        let line = winLines[lastMove][i];
-        if(player === board[line[0]] && player === board[line[1]]) {
-            return true;
-        }
-    }
-    return false;
+  var result = true;
+  for (var j = 0; j < 3; j++) {     //first diagonal
+      result = result && (table[j][j] == player);
+  }
+  if (result) {
+      return gameResult = {
+          result: result,
+          player: player
+      };
+  }
+  result = true;
+  for (var j = 0; j < 3; j++) {  //second diagonal
+      result = result && (table[2 - j][j] == player);
+  }
+  if (result) {
+      return gameResult = {
+          result: result,
+          player: player
+      };
+  }
+  for (var k = 0; k < 3; k++) {
+      result = true;
+      for (var j = 0; j < 3; j++) {      //lines 
+          result = result && (table[k][j] == player);
+      }
+      if (result) {
+          return gameResult = {
+              result: result,
+              player: player
+          };
+      }
+      result = true;
+      for (var j = 0; j < 3; j++) {      //colums
+          result = result && (table[j][k] == player);
+      }
+      if (result) {
+          return gameResult = {
+              result: result,
+              player: player
+          };
+      }
+  }
+  return false;
 
 };
 
