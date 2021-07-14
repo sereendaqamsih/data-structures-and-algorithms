@@ -195,8 +195,8 @@ let table = [
 ]
 const detectTicTacToeWin = (player) => {
   // Solution code here...
-  var result = true;
-  for (var j = 0; j < 3; j++) {     //first diagonal
+  let result = true;
+  for (let j = 0; j < 3; j++) {     //first diagonal
       result = result && (table[j][j] == player);
   }
   if (result) {
@@ -206,7 +206,7 @@ const detectTicTacToeWin = (player) => {
       };
   }
   result = true;
-  for (var j = 0; j < 3; j++) {  //second diagonal
+  for (let j = 0; j < 3; j++) {  //second diagonal
       result = result && (table[2 - j][j] == player);
   }
   if (result) {
@@ -215,9 +215,9 @@ const detectTicTacToeWin = (player) => {
           player: player
       };
   }
-  for (var k = 0; k < 3; k++) {
+  for (let k = 0; k < 3; k++) {
       result = true;
-      for (var j = 0; j < 3; j++) {      //lines 
+      for (let j = 0; j < 3; j++) {      //lines 
           result = result && (table[k][j] == player);
       }
       if (result) {
@@ -227,7 +227,7 @@ const detectTicTacToeWin = (player) => {
           };
       }
       result = true;
-      for (var j = 0; j < 3; j++) {      //colums
+      for (let j = 0; j < 3; j++) {      //colums
           result = result && (table[j][k] == player);
       }
       if (result) {
